@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build_and_test_windows:
+    runs-on: windows-2022
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: install prereqs
+        run: cmd /c '.\build-llvm.bat C:\LLVM16 C:\LLVM16.zip'
+      - uses: actions/upload-artifact@v2
+        with:
+          name: LLVM16.zip
+          path: C:\LLVM16.zip
