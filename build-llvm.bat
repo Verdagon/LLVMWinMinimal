@@ -23,11 +23,11 @@ echo Building LLVM...
 
 mkdir "C:\llvm-src\llvm-project-16.0.0.src\llvm\build"
 cd "C:\llvm-src\llvm-project-16.0.0.src\llvm\build"
-cmake -D "C:\llvm-src\llvm-project-16.0.0.src\llvm\build" -S "C:\llvm-src\llvm-project-16.0.0.src\llvm" -G "Visual Studio 17 2022" -Thost=x64 -A x64 -D "CMAKE_INSTALL_PREFIX=%1" -D CMAKE_BUILD_TYPE=MinSizeRel -D LLVM_TARGETS_TO_BUILD="X86;WebAssembly" -DCMAKE_INSTALL_PREFIX=%1
+cmake -B "C:\llvm-src\llvm-project-16.0.0.src\llvm\build" -S "C:\llvm-src\llvm-project-16.0.0.src\llvm" -G "Visual Studio 17 2022" -Thost=x64 -A x64 -D "CMAKE_INSTALL_PREFIX=%1" -D CMAKE_BUILD_TYPE=MinSizeRel -D LLVM_TARGETS_TO_BUILD="X86;WebAssembly" -DCMAKE_INSTALL_PREFIX=%1
 dir "C:\llvm-src\llvm-project-16.0.0.src\llvm\build"
 
 mkdir %1
-cmake --build . --target install
+cmake --build "C:\llvm-src\llvm-project-16.0.0.src\llvm\build" --target install
 dir %1
 
 tar -xf %2 -C %1
