@@ -30,4 +30,4 @@ mkdir %1
 cmake --build "C:\llvm-src\llvm-project-16.0.0.src\llvm\build" --target install
 dir %1
 
-tar -xf %2 -C %1
+7z a %2 %1/*
